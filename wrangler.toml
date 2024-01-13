@@ -1,2 +1,7 @@
 name = "best-before"
 compatibility_date = "2023-12-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "best-before"
+database_id = "11c4acd9-b9b4-4f1c-80b2-2369c49c0f8c"
