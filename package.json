@@ -3,10 +3,12 @@
     "dev": "wrangler dev src/index.ts"
   },
   "dependencies": {
+    "drizzle-orm": "^0.29.3",
     "hono": "^3.12.3"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20231218.0",
+    "drizzle-kit": "^0.20.12",
     "wrangler": "^3.22.0"
   }
 }
