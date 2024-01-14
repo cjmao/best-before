@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "sqlite",
-  "id": "360fca6f-a8a8-468c-b1e6-0fd228fbfbb9",
+  "id": "2779a567-457c-40d5-98dd-c5726fbf73ce",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "items": {
@@ -30,7 +30,7 @@
         },
         "createdAt": {
           "name": "createdAt",
-          "type": "integer",
+          "type": "text",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false,
@@ -38,7 +38,7 @@
         },
         "bestBefore": {
           "name": "bestBefore",
-          "type": "integer",
+          "type": "text",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false

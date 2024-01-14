@@ -26,11 +26,7 @@ app.get('/', async (c) => {
 app.post('/', async (c) => {
 	try {
 		const data = await c.req.json()
-		const item = await c.get("db").insert(itemsTable).values({
-			name: data.name,
-			quantity: data.quantity,
-			bestBefore: new Date(data.bestBefore)
-		}).returning()
+		const item = await c.get("db").insert(itemsTable).values(data).returning()
 		return c.json(item)
 	} catch (error) {
 		console.error(error)
