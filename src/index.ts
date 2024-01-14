@@ -1,6 +1,6 @@
 import { drizzle } from 'drizzle-orm/d1'
 import { Hono } from 'hono'
-import { Item, itemsTable } from './schema'
+import { itemsTable } from './schema'
 import type { DrizzleD1Database } from 'drizzle-orm/d1'
 
 type Bindings = {
