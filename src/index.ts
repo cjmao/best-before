@@ -1,6 +1,8 @@
+import { createInsertSchema } from 'drizzle-zod'
 import { drizzle } from 'drizzle-orm/d1'
 import { Hono } from 'hono'
 import { itemsTable } from './schema'
+import { zValidator } from '@hono/zod-validator'
 import type { DrizzleD1Database } from 'drizzle-orm/d1'
 
 type Bindings = {
@@ -23,7 +25,7 @@ app.get('/', async (c) => {
 	return c.json(items)
 })
 
-app.post('/', async (c) => {
+app.post('/', zValidator("json", createInsertSchema(itemsTable)), async (c) => {
 	try {
 		const data = await c.req.json()
 		const item = await c.get("db").insert(itemsTable).values(data).returning()
