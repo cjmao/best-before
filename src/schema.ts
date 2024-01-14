@@ -10,3 +10,5 @@ export const itemsTable = sqliteTable("items", {
 }, table => ({
 	nameIndex: index("nameIndex").on(table.name)
 }))
+
+export type Item = typeof itemsTable.$inferSelect
