@@ -13,13 +13,13 @@ type Bindings = {
 
 const app = new Hono<{ Bindings: Bindings }>()
 
-app.get('/', async c => {
+app.get('/items', async c => {
 	const items = await selectItems(c.env.DB)
 	return c.json(items)
 }, validate("json", selectItemsValidator))
 
 app.post(
-	'/',
+	'/items',
 	validate("json", insertItemValidator),
 	async c => {
 		const data = c.req.valid("json")
