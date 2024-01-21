@@ -1,4 +1,5 @@
 import { Hono } from 'hono'
+import { serveStatic } from 'hono/cloudflare-pages'
 import { zValidator as validate } from '@hono/zod-validator'
 import {
 	insertItem,
@@ -12,6 +13,9 @@ type Bindings = {
 }
 
 const app = new Hono<{ Bindings: Bindings }>()
+
+app.use('/', serveStatic())
+app.use('/assets/*', serveStatic())
 
 app.get('/items', async c => {
 	const items = await selectItems(c.env.DB)

@@ -5,26 +5,8 @@
 			"type": "bun",
 			"script": "bun run dev",
 			"problemMatcher": [],
-			"label": "Debug",
+			"label": "Launch",
 			"detail": "Launch debug server"
-		},
-		{
-			"type": "bun",
-			"script": "bun run migrations:generate",
-			"problemMatcher": [],
-			"label": "Generate migrations",
-		},
-		{
-			"type": "bun",
-			"script": "bun run migrations:list",
-			"problemMatcher": [],
-			"label": "List migrations",
-		},
-		{
-			"type": "bun",
-			"script": "bun run migrations:apply",
-			"problemMatcher": [],
-			"label": "Apply migrations",
-		},
+		}
 	]
 }
