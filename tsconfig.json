@@ -6,12 +6,12 @@
 		"esModuleInterop": true,
 		"strict": true,
 		"lib": [
+			"dom",
 			"esnext"
 		],
 		"types": [
 			"@cloudflare/workers-types"
 		],
 		"jsx": "react-jsx",
-		"jsxImportSource": "hono/jsx"
 	},
 }
