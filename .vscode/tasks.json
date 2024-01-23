@@ -3,10 +3,21 @@
 	"tasks": [
 		{
 			"type": "bun",
+			"script": "bun run build:dev",
+			"problemMatcher": [],
+			"label": "Development Build"
+		},
+		{
+			"type": "bun",
+			"script": "bun run build",
+			"problemMatcher": [],
+			"label": "Production Build"
+		},
+		{
+			"type": "bun",
 			"script": "bun run dev",
 			"problemMatcher": [],
-			"label": "Launch",
-			"detail": "Launch debug server"
-		}
+			"label": "Launch debug server"
+		},
 	]
 }
