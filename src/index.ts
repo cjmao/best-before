@@ -22,6 +22,26 @@ const route = app
 		'/items',
 		async c => {
 			const items = await selectItems(c.env.DB)
+
+			// Add test data
+			if (items.length === 0)
+				items.push(...[
+					{
+						id: 0,
+						name: "Apple",
+						quantity: 3,
+						createdAt: "2024-01-20",
+						bestBefore: "2024-01-31"
+					},
+					{
+						id: 1,
+						name: "Banana",
+						quantity: 6,
+						createdAt: "2024-01-20",
+						bestBefore: "2024-01-25"
+					},
+				])
+
 			return c.json(items)
 		}
 	)
