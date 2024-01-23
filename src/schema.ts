@@ -21,7 +21,7 @@ export const items = sqliteTable("items", {
 	nameIndex: index("nameIndex").on(table.name)
 }))
 
-type Item = typeof items.$inferSelect
+export type Item = typeof items.$inferSelect
 type ItemToBeInserted = typeof items.$inferInsert
 
 export const selectItemsValidator = createSelectSchema(items, {
