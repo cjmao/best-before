@@ -2,6 +2,7 @@ import { Hono } from 'hono'
 import { serveStatic } from 'hono/cloudflare-pages'
 import { zValidator as validate } from '@hono/zod-validator'
 import {
+	makeFakeItems,
 	insertItem,
 	insertItemValidator,
 	selectItems,
@@ -11,6 +12,8 @@ import {
 type Bindings = {
 	DB: D1Database
 }
+
+const fakeItems = makeFakeItems(10)
 
 const app = new Hono<{ Bindings: Bindings }>()
 
@@ -24,23 +27,9 @@ const route = app
 			const items = await selectItems(c.env.DB)
 
 			// Add test data
-			if (items.length === 0)
-				items.push(...[
-					{
-						id: 0,
-						name: "Apple",
-						quantity: 3,
-						createdAt: "2024-01-20",
-						bestBefore: "2024-01-31"
-					},
-					{
-						id: 1,
-						name: "Banana",
-						quantity: 6,
-						createdAt: "2024-01-20",
-						bestBefore: "2024-01-25"
-					},
-				])
+			if (items.length === 0) {
+				items.push(...fakeItems)
+			}
 
 			return c.json(items)
 		}

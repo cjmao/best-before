@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20231218.0",
+    "@faker-js/faker": "^8.4.0",
     "@hono/vite-cloudflare-pages": "^0.1.2",
     "@types/react": "^18.2.48",
     "@types/react-dom": "^18.2.18",

@@ -49,8 +49,7 @@ export const Inventory: FC<Props> = ({ items }) => {
 }
 
 function daysRemaining(item: Item) {
-	// Using a test date
-	const today = new Date("2024-01-20")
+	const today = new Date(Date.now())
 	const bestBefore = new Date(item.bestBefore)
 	let dt = bestBefore.getTime() - today.getTime()
 	dt /= 1000 * 3600 * 24
