@@ -8,39 +8,43 @@ interface Props {
 
 export const Inventory: FC<Props> = ({ items }) => {
 	return (
-		<>
-			<h2>Inventory</h2>
-			<table>
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>Quantity</th>
-						<th>Best Before</th>
-						<th>Days remaining</th>
-						<th>Status</th>
-					</tr>
-				</thead>
-				<tbody>
-					{items.length === 0 ? (
-						<tr>
-							<td colSpan={5}>No items</td>
+		<div id="inventory">
+			<div id="inventory-header">
+				<h2>Inventory</h2>
+				<button>Add Item</button>
+			</div>
+			<div id="inventory-body">
+				<table>
+					<thead>
+						<tr className="table-header-row">
+							<th>Name</th>
+							<th>Quantity</th>
+							<th>Best Before</th>
+							<th>Days remaining</th>
+							<th>Status</th>
 						</tr>
-					) : items.map(item => {
-						const daysLeft = daysRemaining(item)
-						return (
-							<tr key={item.id}>
-								<td>{item.name}</td>
-								<td className="numberRow">{item.quantity}</td>
-								<td>{item.bestBefore}</td>
-								<td>{daysLeft} days</td>
-								<td>{status(daysLeft)}</td>
+					</thead>
+					<tbody>
+						{items.length === 0 ? (
+							<tr className="table-body-row">
+								<td colSpan={5}>No items</td>
 							</tr>
-						)
-					})}
-				</tbody>
-			</table>
-			<button>Add Item</button>
-		</>
+						) : items.map(item => {
+							const daysLeft = daysRemaining(item)
+							return (
+								<tr className="table-body-row" key={item.id}>
+									<td>{item.name}</td>
+									<td className="col-quantity">{item.quantity}</td>
+									<td className="text-date">{item.bestBefore}</td>
+									<td>{daysLeft} days</td>
+									<td>{status(daysLeft)}</td>
+								</tr>
+							)
+						})}
+					</tbody>
+				</table>
+			</div>
+		</div>
 	)
 }
 
