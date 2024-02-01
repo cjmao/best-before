@@ -1,5 +1,4 @@
 import { drizzle } from 'drizzle-orm/d1'
-import { faker } from '@faker-js/faker'
 import { sql } from 'drizzle-orm'
 import {
 	createInsertSchema,
@@ -42,19 +41,4 @@ export async function selectItems(db: D1Database): Promise<Item[]> {
 export async function insertItem(db: D1Database, item: ItemToBeInserted): Promise<Item> {
 	const result = await drizzle(db).insert(items).values(item).returning()
 	return result[0]
-}
-
-export function makeFakeItems(count: number): Item[] {
-	const formatter = new Intl.DateTimeFormat("en", { dateStyle: 'medium' })
-	const fake = () => ({
-		id: faker.number.int(),
-		name: faker.word.noun(),
-		quantity: faker.number.int({ min: 1, max: 20 }),
-		createdAt: formatter.format(faker.date.recent()),
-		bestBefore: formatter.format(faker.date.soon({ days: 7 })),
-	})
-	const items = [] as Item[]
-	for (let i = 0; i < count; ++i)
-		items.push(fake())
-	return items
 }

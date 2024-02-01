@@ -2,18 +2,16 @@ import { Hono } from 'hono'
 import { serveStatic } from 'hono/cloudflare-pages'
 import { zValidator as validate } from '@hono/zod-validator'
 import {
-	makeFakeItems,
 	insertItem,
 	insertItemValidator,
 	selectItems,
 	selectItemsValidator
 } from './schema'
+import fakeItems from '../items.json'
 
 type Bindings = {
 	DB: D1Database
 }
-
-const fakeItems = makeFakeItems(10)
 
 const app = new Hono<{ Bindings: Bindings }>()
 
@@ -25,13 +23,7 @@ const route = app
 		'/items',
 		async c => {
 			const items = await selectItems(c.env.DB)
-
-			// Add test data
-			if (items.length === 0) {
-				items.push(...fakeItems)
-			}
-
-			return c.json(items)
+			return c.json(items.length === 0 ? fakeItems : items)
 		}
 	)
 	.post(
